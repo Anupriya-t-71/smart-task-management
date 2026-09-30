@@ -49,7 +49,7 @@ services:
     ports:
       - "5003:5003"
     environment:
-    MONGO_URI: momgodb://mongodb:27017/notoficationdb
+    MONGO_URI: momgodb://mongodb:27017/notificationdb
     JWT_SECRET: Change_me
     depends_on:
       - mongodb
