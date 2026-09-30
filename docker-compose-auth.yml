@@ -13,11 +13,11 @@ services:
     ports:
       - "5001:5001"
     environment:
-    MONGO_URI: mongodb://mongodb:27017/authdb
-    JWT_SRECRET: Change_me
-    JWT_EXPIRES_IN: 1h
-    depends_on:
-      - mongodb
+      MONGO_URI: mongodb://mongodb:27017/authdb
+      JWT_SRECRET: Change_me
+      JWT_EXPIRES_IN: 1h
+      depends_on:
+        - mongodb
 
 
   report-service:
@@ -26,10 +26,10 @@ services:
     ports:
       - "5004:5004"
     environment:
-    MONGO_URI: mongodb://mongodb:27017/reportdb
-    JWT_SECRET: Change_me
-    depends_on:
-      - mongodb
+      MONGO_URI: mongodb://mongodb:27017/reportdb
+      JWT_SECRET: Change_me
+      depends_on:
+        - mongodb
 
 
   task-service:
@@ -38,10 +38,10 @@ services:
     ports:
       - "5002:5002"
     environment:
-    MONGO_URI: mongodb://mongodb:27017/taskdb
-    JWT_SECRET: Change_me
-    depends_on:
-      - mongodb
+      MONGO_URI: mongodb://mongodb:27017/taskdb
+      JWT_SECRET: Change_me
+      depends_on:
+        - mongodb
 
   notification-service:
     build: ./notification-service
@@ -49,10 +49,10 @@ services:
     ports:
       - "5003:5003"
     environment:
-    MONGO_URI: momgodb://mongodb:27017/notificationdb
-    JWT_SECRET: Change_me
-    depends_on:
-      - mongodb
+      MONGO_URI: momgodb://mongodb:27017/notificationdb
+      JWT_SECRET: Change_me
+      depends_on:
+        - mongodb
 
   api-gateway:
     build: ./api-gateway_1784010924579
@@ -60,15 +60,15 @@ services:
     ports: 
       - "5000:5000"
     environment:
-    PORT: 5000
-    AUTH_SERVICE_URL: http://auth-service:5001
-    TASK_SERVICE_URL: http://task-service:5002
-    JWT_SECRET: Change_me
-    depends_on: 
-      - auth-service
-      - task-service
-      - report-service
-      - notification-service
+      PORT: 5000
+      AUTH_SERVICE_URL: http://auth-service:5001
+      TASK_SERVICE_URL: http://task-service:5002
+      JWT_SECRET: Change_me
+      depends_on: 
+        - auth-service
+        - task-service
+        - report-service
+        - notification-service
 
     
 
