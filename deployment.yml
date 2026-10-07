@@ -34,6 +34,7 @@ metadata:
 spec:
   ports:
     - port: 5001
+      targetPort: 5001
   selector:
     app: auth-service
  
@@ -68,6 +69,7 @@ metadata:
 spec:
   ports:
     - port: 5002
+      targetPort: 5002
   selector:
     app: task-service
  
@@ -102,6 +104,7 @@ metadata:
 spec:
   ports:
     - port: 5003
+      targetPort: 5003
   selector:
     app: notification-service
  
@@ -136,6 +139,7 @@ metadata:
 spec:
   ports:
     - port: 5004
+      targetPort: 5004
   selector:
     app: report-service
  
@@ -168,10 +172,9 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
-  type: NodePort
   ports:
     - port: 5000
-      nodePort: 30000
+      targetPort: 5000
   selector:
     app: api-gateway
  
