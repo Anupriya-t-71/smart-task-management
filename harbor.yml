@@ -1,4 +1,3 @@
----
 - name: Install Harbor
   hosts: harbor
   become: yes
