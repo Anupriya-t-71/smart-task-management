@@ -59,7 +59,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: auth-service
-          image: 13.201.28.198:8090/smart-task/auth-service
+          image: 13.233.40.175:8090/smart-task/auth-service
           ports:
             - containerPort: 5001
           env:
@@ -98,7 +98,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: task-service
-          image: 13.201.28.198:8090/smart-task/task-service
+          image: 13.233.40.175:8090/smart-task/task-service
           ports:
             - containerPort: 5002
           env:
@@ -137,7 +137,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: notification-service
-          image: 13.201.28.198:8090/smart-task/notification-service
+          image: 13.233.40.175:8090/smart-task/notification-service
           ports:
             - containerPort: 5003
           env:
@@ -176,7 +176,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: report-service
-          image: 13.201.28.198:8090/smart-task/report-service
+          image: 13.233.40.175:8090/smart-task/report-service
           ports:
             - containerPort: 5004
           env:
@@ -217,7 +217,7 @@ spec:
         - name: harbor-secret
       containers:
         - name: api-gateway
-          image: 13.201.28.198:8090/smart-task/api-gateway
+          image: 13.233.40.175:8090/smart-task/api-gateway
           ports:
             - containerPort: 5000
           env:
