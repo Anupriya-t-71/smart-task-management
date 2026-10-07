@@ -94,7 +94,7 @@
         kubectl create secret docker-registry harbor-secret \
           --docker-server=13.233.40.175:8090 \
           --docker-username=admin \
-          --docker-password='Harbor@12345' \
+          --docker-password='Harbor12345' \
           --dry-run=client -o yaml | kubectl apply -f -
       environment:
         KUBECONFIG: /home/ubuntu/.kube/config
