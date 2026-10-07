@@ -55,12 +55,13 @@ spec:
       labels:
         app: auth-service
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
         - name: auth-service
           image: 13.201.28.198:8090/smart-task/auth-service
           ports:
             - containerPort: 5001
-              hostPort: 5001
           env:
             - name: MONGO_URI
               value: mongodb://mongodb:27017/authdb
@@ -93,12 +94,13 @@ spec:
       labels:
         app: task-service
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
         - name: task-service
           image: 13.201.28.198:8090/smart-task/task-service
           ports:
             - containerPort: 5002
-              hostPort: 5002
           env:
             - name: MONGO_URI
               value: mongodb://mongodb:27017/taskdb
@@ -131,12 +133,13 @@ spec:
       labels:
         app: notification-service
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
         - name: notification-service
           image: 13.201.28.198:8090/smart-task/notification-service
           ports:
             - containerPort: 5003
-              hostPort: 5003
           env:
             - name: MONGO_URI
               value: mongodb://mongodb:27017/notificationdb
@@ -169,12 +172,13 @@ spec:
       labels:
         app: report-service
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
         - name: report-service
           image: 13.201.28.198:8090/smart-task/report-service
           ports:
             - containerPort: 5004
-              hostPort: 5004
           env:
             - name: MONGO_URI
               value: mongodb://mongodb:27017/reportdb
@@ -187,9 +191,11 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
+  type: NodePort
   ports:
     - port: 5000
       targetPort: 5000
+      nodePort: 30000
   selector:
     app: api-gateway
  
@@ -207,12 +213,13 @@ spec:
       labels:
         app: api-gateway
     spec:
+      imagePullSecrets:
+        - name: harbor-secret
       containers:
         - name: api-gateway
           image: 13.201.28.198:8090/smart-task/api-gateway
           ports:
             - containerPort: 5000
-              hostPort: 5000
           env:
             - name: PORT
               value: "5000"
