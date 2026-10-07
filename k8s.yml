@@ -18,24 +18,22 @@
       shell: |
         mkdir -p /etc/containerd
         containerd config default > /etc/containerd/config.toml
-        sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
-        systemctl restart containerd
-
+        sed -i "s/SystemdCgroup = false/SystemdCgroup = true/" /etc/containerd/config.toml
+ 
     - name: Configure Harbor HTTP registry for containerd
       shell: |
         mkdir -p /etc/containerd/certs.d/13.233.40.175:8090
  
-        cat > /etc/containerd/certs.d/13.233.40.175:8090/hosts.toml <<EOF
+        tee /etc/containerd/certs.d/13.233.40.175:8090/hosts.toml > /dev/null <<'EOF'
         server = "http://13.233.40.175:8090"
  
         [host."http://13.233.40.175:8090"]
           capabilities = ["pull", "resolve"]
         EOF
  
-        grep -q 'config_path = "/etc/containerd/certs.d"' /etc/containerd/config.toml || \
-        sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry\]/a\      config_path = "/etc/containerd/certs.d"' /etc/containerd/config.toml
+        sed -i "/\[plugins.'io.containerd.cri.v1.images'.registry\]/,/^\[/ s|config_path = ''|config_path = '/etc/containerd/certs.d'|" /etc/containerd/config.toml
  
-        systemctl restart containerd  
+        systemctl restart containerd
  
     - name: Enable IP forwarding
       shell: |
@@ -87,7 +85,7 @@
         owner: ubuntu
         group: ubuntu
         mode: '0600'
-
+ 
     - name: Create Harbor image pull secret
       become_user: ubuntu
       shell: |
