@@ -33,7 +33,7 @@
       replace:
         path: /opt/harbor/harbor.yml.tmpl
         regexp: '^hostname:.*'
-        replace: 'hostname: 13.233.40.175'
+        replace: 'hostname: 13.233.164.102'
  
     - name: Set Harbor HTTP port
       replace:
