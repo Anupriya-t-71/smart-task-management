@@ -67,6 +67,8 @@ spec:
               value: mongodb://mongodb:27017/authdb
             - name: JWT_SECRET
               value: Change_me
+            - name: JWT_EXPIRES_IN
+              value: "1h"
  
 ---
 apiVersion: v1
