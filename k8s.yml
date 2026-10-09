@@ -21,12 +21,12 @@
  
     - name: Configure Harbor HTTP registry for containerd
       shell: |
-        mkdir -p /etc/containerd/certs.d/13.233.164.102:8090
+        mkdir -p /etc/containerd/certs.d/13.201.94.18:8090
  
         tee /etc/containerd/certs.d/13.233.164.102:8090/hosts.toml > /dev/null <<'EOF'
-        server = "http://13.233.164.102:8090"
+        server = "http://13.201.94.18:8090"
  
-        [host."http://13.233.164.102:8090"]
+        [host."http://13.201.94.18:8090"]
           capabilities = ["pull", "resolve"]
         EOF
  
@@ -89,7 +89,7 @@
       become_user: ubuntu
       shell: |
         kubectl create secret docker-registry harbor-secret \
-          --docker-server=13.233.164.102:8090 \
+          --docker-server=13.201.94.18:8090 \
           --docker-username=admin \
           --docker-password='Harbor12345' \
           --dry-run=client -o yaml | kubectl apply -f -
