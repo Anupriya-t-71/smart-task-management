@@ -23,7 +23,7 @@
       shell: |
         mkdir -p /etc/containerd/certs.d/13.201.94.18:8090
  
-        tee /etc/containerd/certs.d/13.233.164.102:8090/hosts.toml > /dev/null <<'EOF'
+        tee /etc/containerd/certs.d/13.201.94.18:8090/hosts.toml > /dev/null <<'EOF'
         server = "http://13.201.94.18:8090"
  
         [host."http://13.201.94.18:8090"]
