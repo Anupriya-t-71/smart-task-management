@@ -1,5 +1,5 @@
 [k8s]
-13.232.250.96 ansible_user=ubuntu ansible_ssh_private_key_file=./backend-deployment.pem
+13.234.217.154 ansible_user=ubuntu ansible_ssh_private_key_file=./backend-deployment.pem
 
 [harbor]
-13.233.164.102 ansible_user=ubuntu ansible_ssh_private_key_file=./backend-deployment.pem
+13.201.94.18 ansible_user=ubuntu ansible_ssh_private_key_file=./backend-deployment.pem
